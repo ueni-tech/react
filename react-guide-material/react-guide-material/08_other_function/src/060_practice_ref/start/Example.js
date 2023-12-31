@@ -1,13 +1,19 @@
 import { useState, useRef, forwardRef, useImperativeHandle } from "react";
 
 const Video = forwardRef(({ path }, ref) => {
+  const VideoRef = useRef();
 
   useImperativeHandle(ref, () => ({
-    
+    play(){
+      VideoRef.current.play();
+    },
+    stop(){
+      VideoRef.current.pause();
+    }
   }));
 
   return (
-    <video style={{ maxWidth: "100%" }}>
+    <video style={{ maxWidth: "100%" }} ref={VideoRef}>
       <source src={path}></source>
     </video>
   );
@@ -20,13 +26,15 @@ const Example = () => {
 
   return (
     <div>
-      <h3>練習問題</h3>
-      <p>useRef、useImperativeHandle、forwardRefを使って完成系の動画再生機能を作成してください。※useImperativeHandleでplay(再生)、stop(停止)メソッドを定義すること。
-</p>
       <Video ref={ref} path="./sample.mp4" />
       <button
         onClick={() => {
-          setPlaying((prev) => !prev);
+          if(playing){
+            ref.current.stop();
+          } else {
+            ref.current.play();
+          }
+          setPlaying((prev)=> !prev);
         }}
       >
         {playing ? "Stop" : "Play"}
