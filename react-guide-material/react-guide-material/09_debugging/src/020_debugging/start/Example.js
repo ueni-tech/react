@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-const Child = (countNum) => {
-  return <p>現在のカウント数: {countNum.val}</p>
+const Child = ({count}) => {
+  return <p>現在のカウント数: {count.val}</p>
 }
 
 const Example = () => {

@@ -18,7 +18,7 @@ const Todo = () => {
     },
   ];
 
-  const [ todos, setTodos ] = useState(todosList);
+  const [todos, setTodos] = useState(todosList);
 
   const deleteTodo = (id) => {
     const newTodos = todos.filter((todo) => {
@@ -34,8 +34,9 @@ const Todo = () => {
 
   return (
     <>
-      <List todos={todos} deleteTodo={deleteTodo}/>
-      <Form createTodo={createTodo}/>
+      <h2>Reminder</h2>
+      <List todos={todos} deleteTodo={deleteTodo} />
+      <Form createTodo={createTodo} />
     </>
   )
 };
