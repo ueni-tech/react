@@ -1,15 +1,16 @@
 .homePage {
   width: 100%;
-  height: calc(100vh - 80px);
-  /* height: auto; */
+  /* height: calc(100vh - 80px); */
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 50px;
   padding: 20px;
 }
 
 .homePage .postContents {
-  width: 600px;
+  width: 70%;
   height: auto;
   max-height: 600px;
   background-color: white;
@@ -37,7 +38,7 @@
 }
 
 .nameAndDeleteButton button {
-  flex: 10%;
+  flex: 15%;
   background-color: rgba(255, 0, 0, 0.453);
   color: white;
   padding: 7px 15px;
@@ -52,5 +53,5 @@
 }
 
 .nameAndDeleteButton h3 {
-  flex: 90%;
+  flex: 85%;
 }
