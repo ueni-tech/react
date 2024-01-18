@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Task, ViewMode, Gantt } from "gantt-task-react";
 import { ViewSwitcher } from "./components/view-switcher";
 import { getStartEndDateForProject, initTasks } from "./helper";
-import "gantt-task-react/dist/index.css";
+import { v4 as uuidv4 } from 'uuid';
+import "./common/index.css";
 
 // Init
 const App = () => {
-  const [view, setView] = React.useState<ViewMode>(ViewMode.Day);
-  const [tasks, setTasks] = React.useState<Task[]>(initTasks());
-  const [isChecked, setIsChecked] = React.useState(true);
+  const [view, setView] = useState<ViewMode>(ViewMode.Day);
+  const [tasks, setTasks] = useState<Task[]>(initTasks());
+  const [isChecked, setIsChecked] = useState(true);
   let columnWidth = 65;
   if (view === ViewMode.Year) {
     columnWidth = 350;
@@ -67,6 +68,37 @@ const App = () => {
     console.log("On expander click Id:" + task.id);
   };
 
+  // タスク追加
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+  const currentDay = currentDate.getDate();
+  const [taskName, setTaskName] = useState("");
+  const [taskKind, setTaskKind] = useState("task");
+  const [upperProject, setUpperProject] = useState<Task>();
+
+  const onAddTodoHandler = () => {
+    if (taskName === "") return;
+
+    const task: Task = {
+      start: new Date(currentYear, currentMonth, currentDay, 0, 0),
+      end: new Date(currentYear, currentMonth, currentDay, 23, 59),
+      name: taskName,
+      id: uuidv4(),
+      progress: 0,
+      type: (taskKind === "task") ? "task" : "project",
+      updateDate: currentDate,
+    };
+
+    if (taskKind === "project") task.hideChildren = false;
+    if (upperProject !== undefined) task.project = upperProject.id;
+
+
+    setTasks([...tasks, task]);
+    // 追加フォームのリセット
+    setTaskName("");
+  };
+
   return (
     <div className="Wrapper">
       <ViewSwitcher
@@ -75,6 +107,10 @@ const App = () => {
         isChecked={isChecked}
       />
       <h3>Gantt With Unlimited Height</h3>
+      {/* タスクの追加ボタン */}
+      <input type="text" value={taskName} onChange={(e) => setTaskName(e.target.value)}/>
+      <button onClick={onAddTodoHandler}>+ Task</button>
+
       <Gantt
         tasks={tasks}
         viewMode={view}
@@ -88,21 +124,6 @@ const App = () => {
         listCellWidth={isChecked ? "155px" : ""}
         columnWidth={columnWidth}
       />
-      {/* <h3>Gantt With Limited Height</h3>
-      <Gantt
-        tasks={tasks}
-        viewMode={view}
-        onDateChange={handleTaskChange}
-        onDelete={handleTaskDelete}
-        onProgressChange={handleProgressChange}
-        onDoubleClick={handleDblClick}
-        onClick={handleClick}
-        onSelect={handleSelect}
-        onExpanderClick={handleExpanderClick}
-        listCellWidth={isChecked ? "155px" : ""}
-        ganttHeight={300}
-        columnWidth={columnWidth}
-      /> */}
     </div>
   );
 };
