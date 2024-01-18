@@ -123,6 +123,7 @@ const App = () => {
         onExpanderClick={handleExpanderClick}
         listCellWidth={isChecked ? "155px" : ""}
         columnWidth={columnWidth}
+        timeStep={86400000}
       />
     </div>
   );
