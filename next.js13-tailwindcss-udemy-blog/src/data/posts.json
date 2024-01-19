@@ -11,6 +11,12 @@
       "title": "Jsonサーバー",
       "content": "json-severライブラリについて勉強しています。json-severライブラリについて勉強しています。json-severライブラリについて勉強しています。json-severライブラリについて勉強しています。",
       "createdAt": "2024/01/20"
+    },
+    {
+      "id": "routing-fundamentals",
+      "title": "Routing Fundamentals",
+      "content": "すべてのアプリケーションの骨格はルーティングです。このページでは、Web のルーティングの基本概念と Next.js でルーティングを処理する方法を紹介します。用語まず、ドキュメント全体でこれらの用語が使用されていることがわかります。クイックリファレンスは次のとおりです。",
+      "createdAt": "2024/01/20"
     }
   ]
 }
