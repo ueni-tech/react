@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": "next.js13-udemy",
+      "title": "Next.js 13をUdemyで学ぶ",
+      "content": "shincodeさんの教材でNext.js13を学びます。",
+      "createdAt": "2024/01/19"
+    },
+    {
+      "id": "json-server",
+      "title": "Jsonサーバー",
+      "content": "json-severライブラリについて勉強しています。json-severライブラリについて勉強しています。json-severライブラリについて勉強しています。json-severライブラリについて勉強しています。",
+      "createdAt": "2024/01/20"
+    },
+    {
+      "id": "routing-fundamentals",
+      "title": "Routing Fundamentals",
+      "content": "すべてのアプリケーションの骨格はルーティングです。このページでは、Web のルーティングの基本概念と Next.js でルーティングを処理する方法を紹介します。用語まず、ドキュメント全体でこれらの用語が使用されていることがわかります。クイックリファレンスは次のとおりです。",
+      "createdAt": "2024/01/20"
+    },
+    {
+      "id": "test",
+      "title": "テスト投稿",
+      "content": "テスト投稿の本文です。",
+      "createdAt": "2024-01-19T08:54:52.801Z"
+    },
+    {
+      "id": "sample",
+      "title": "サンプル",
+      "content": "サンプル",
+      "createdAt": "2024-01-19T08:57:06.861Z"
+    }
+  ]
+}
